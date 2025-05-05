@@ -1,6 +1,11 @@
 version: 2
 
 models:
+  - name: fct_annual_financial_statements
+    description: Annual financial statements. One row per annual report (company/year-combination).
+    columns:
+      - name: name
+
   - name: dim_customers
     description: Customer overview data mart, offering key details for each unique customer. One row per customer.
     columns:
