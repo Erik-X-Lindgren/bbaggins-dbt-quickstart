@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: financial_data
+    database: root-stock-274907
+    schema: financial_data
+    tables:
+      - name: annual_financial_statements
