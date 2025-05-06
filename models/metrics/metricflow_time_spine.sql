@@ -1,15 +1,4 @@
-with days as (
-    {{dbt_utils.date_spine('day'
-    , "DATE('2000-01-01')"
-    , "DATE('2026-01-01')"
-    )
-    }}
-),
-
-final as (
-    select cast(date_day as date) as date_day
-    from days
-)
-
-select *
-from final
+SELECT DISTINCT
+  fiscal_year
+FROM {{ ref('fct_annual_financial_statements') }}
+ORDER BY fiscal_year

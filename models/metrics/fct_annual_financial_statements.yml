@@ -1,0 +1,40 @@
+semantic_models:
+  - name: annual_financial_statements
+    description: |
+      Annual financial statements fact table. This table is at the granularity one row per company and year.
+    model: ref('fct_annual_financial_statements')
+    primary_entity: company
+    dimensions:
+      - name: fiscal_year
+        expr: fiscal_year
+        type: time
+        type_params:
+          time_granularity: year
+      - name: company
+        type: categorical
+        expr: company
+    measures:
+      - name: revenue
+        description: The year's revenue for the company.
+        expr: revenue
+        agg: sum
+        agg_time_dimension: fiscal_year
+      - name: net_profit
+        description: The profit after tax for the company.
+        expr: net_profit
+        agg: sum
+        agg_time_dimension: fiscal_year
+
+metrics:
+  - name: "revenue"
+    description: "Sum of revenues value"
+    type: simple
+    label: "revenue"
+    type_params:
+      measure: revenue
+  - name: "net_profit"
+    description: "Sum of net profit value"
+    type: simple
+    label: "net_profit"
+    type_params:
+      measure: net_profit
