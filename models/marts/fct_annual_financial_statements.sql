@@ -70,7 +70,7 @@ meta_pivot as (
 
 select
     n.company,
-    n.year as fiscal_year,
+    DATE(CONCAT(n.year, '-01-01')) as fiscal_year,
     n.revenue,
     n.gross_profit,
     n.operating_profit,
